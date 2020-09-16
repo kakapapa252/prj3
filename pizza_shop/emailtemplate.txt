@@ -1,0 +1,32 @@
+<html>
+
+<body>
+    <h1>Order Details : {{orderid}}</h1>
+    <table style="width:100%">
+        {%for order in orderlist%} {%for orderDetail in order.orderdetail_set.all()%}
+        <p>{{orderDetail.menudesc}} - ({{orderDetail.submenudesc}}) - ({{orderDetail.size}})</p>
+        {%if orderDetail.ordertoppings_set.all()%}
+        <pre>Toppings - 
+            {%for toping in orderDetail.ordertoppings_set.all()%}
+            ({{toping.toppingdesc}})
+            {%endfor%}
+        </pre> {%endif%}
+        <pre>
+            Price - 
+            <pre>
+                ({{"${:,.2f}".format(orderDetail.submenuprice)}}) 
+                {%for extratopping in orderDetail.orderextratopping_set.all()%}
+                    Ex - ({{"${:,.2f}".format(extratopping.extratoppingprice)}})
+                {%endfor%}
+            </pre>
+        </pre>
+        <hr/> {%endfor%}
+        <pre>
+            Total : {{"${:,.2f}".format(price)}}
+        </pre> {%endfor%}
+        <pre style="color:blue">
+            Your order will be ready shortly
+        </pre>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'pizza_shop/css/appcss/site.css' %}" /> {% block customstatic %}{% endblock %}
+</head>
+
+<body>
+    <div class="body-container">
+        <div class="logo-container">
+            <span class="logo">Pizzeria</span>
+
+            <button class="button-main login">Login</button>
+            <button class="button-main signup">Signup</button>
+            <button class="button-main checkout">Checkout</button>
+            <button class="button-main logout">Logout</button>
+
+        </div>
+        <div class="navbar">
+            <div class="navbar-container">
+                <a href="{% url 'menu' %}" class="navbar-brand">Menu</a>
+                <div class="welcomr-msg">
+                    <span>Welcome - </span> <span class="display-name">{{ username }}</span>
+                </div>
+                <div class="cart">
+                    <svg width="15" height="15" viewBox="0 0 15 15">
+                        <title>Shopping cart</title>
+                        <path fill="currentColor"
+                            d="M12 12c.8 0 1.5.7 1.5 1.5S12.8 15 12 15s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5zM0 0h2.5l.7 1.5h11.1c.5 0 .8.4.8.8 0 .1 0 .2-.1.4l-2.7 4.9c-.3.4-.8.6-1.4.6H5.3l-.6 1.2v.1c0 .1.1.1.2.1h8.7v1.5h-9c-.9.1-1.6-.6-1.6-1.4 0-.2.1-.5.1-.7l1-1.9-2.6-5.6H0V0zm4.5 12c.8 0 1.5.7 1.5 1.5S5.3 15 4.5 15 3 14.3 3 13.5 3.7 12 4.5 12z">
+                        </path>
+                    </svg>
+                    <span class="price"><span class="sup">$</span><span class="priceval">0.00</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-content">
+            <div class="message">
+                {% if messages %} {% for message in messages %}
+                <span {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</span> {% endfor %} {% endif %}
+            </div>
+            {% block content %} {% endblock %}
+
+        </div>
+    </div>
+
+    <div class="floatint-area">
+        <div class="floating-content">
+            <div class="close-floatingbutton">X</div>
+            <div class="signupform">
+                <div class="signupcontent">
+                    <form method="post" action="{% url 'signup' %}">
+                        {% csrf_token %} {% for field in form %}
+                        <p>
+                            {{ field.label_tag }}<br> {{ field }}
+                        </p>
+                        {% endfor %}
+                        <button class="btn lg-btn" type="submit">Sign up</button>
+                    </form>
+                </div>
+            </div>
+            <div class="loginform">
+                <div class="signupcontent">
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="userinp">
+                            <label>UserName : </label>
+                            <div><input required type="text" id="lUser" name="username"></div>
+                        </div>
+                        <div class="userinp">
+                            <label>Password : </label>
+                            <div><input required type="password" id="pUser" name="password"></div>
+                        </div>
+                        <div class="userinp">
+                            <button class="btn lg-btn" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="toppingform">
+                <div class="heading"><b>Select Toppings</b></div>
+                <div class="signupcontent">
+                    <div class="toppings-container">
+                    </div>
+                    <div class="extra-container">
+                    </div>
+                </div>
+                <div class="buttonholder">
+                    <div class="buttoncontainer">
+                        <button class="bt-toppings">Add To Cart</button>
+                    </div>
+                    <div class="buttoncontainer">
+                        <button class="bt-toppings-next">Next</button>
+                    </div>
+                    <div class="buttoncontainer">
+                        <button class="bt-toppings-back">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="topping_details" style="display:none">
+        {%for topping in toppings%}
+        <div class='topping-item'>
+            <div class='toping-check'>
+                <input class='toppingcheck' type='checkbox' val='{{topping.id}}'>
+            </div>
+            <div class='toping-name'>{{topping.topping_desc}}</div>
+        </div>
+        {%endfor%}
+    </div>
+
+    {%for extra in extratopping%}
+    <div class="extra_{{extra.menu_option.id}}" style="display: none;">
+        <div class='extra-item'>
+            <div class="extra-title">{{extra.extratopping_desc}}</div>
+            <div class='extra-tab-optioncontainer'>
+                {%for topingDetail in extra.extratoppings_set.all%}
+                <div class="extra-tab-option">
+                    <span class="parenttopid" style="display: none;">{{extra.parent_topping.id}}</span>
+                    <input type="radio" name="{{extra.id}}" value="{{topingDetail.id}}"></div>
+                <div class="extra-tab">
+                    <span>{{topingDetail.menusuboptionsize.size_desc}}</span>
+                    <span class="extra-price">(+${{topingDetail.price|stringformat:".2f"}})</span>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</body>
+
+</html>

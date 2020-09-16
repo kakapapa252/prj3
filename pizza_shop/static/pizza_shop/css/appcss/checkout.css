@@ -1,0 +1,106 @@
+.tableContainer .order-detail-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.tableContainer .order-detail-container .order-details {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 100%;
+}
+.tableContainer .order-detail-container .order-details .detail,
+.tableContainer .order-detail-container .order-details .price {
+  padding: 25px;
+  border-bottom: 1px solid #ccc;
+}
+.tableContainer .order-detail-container .order-details .detail {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  max-width: 70%;
+}
+.tableContainer .order-detail-container .order-details .detail .main-item {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.tableContainer .order-detail-container .order-details .detail .main-item .main {
+  padding-left: 5px;
+}
+.tableContainer .order-detail-container .order-details .detail .toppings {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  font-size: 0.8em;
+}
+.tableContainer .order-detail-container .order-details .detail .toppings .toppin-text {
+  font-weight: bold;
+  padding-right: 5px;
+}
+.tableContainer .order-detail-container .order-details .detail .toppings .topping .topping-details .topping {
+  font-style: italic;
+  padding-right: 5px;
+}
+.tableContainer .order-detail-container .order-details .detail .remove {
+  padding-left: 2px;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 0.7em;
+  color: blueviolet;
+  cursor: pointer;
+}
+.tableContainer .order-detail-container .order-details .price {
+  width: 30%;
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.tableContainer .order-detail-container .order-details .price .main-price {
+  display: flex;
+}
+.tableContainer .order-detail-container .order-details .price .extra-item .extra-price .sideItem {
+  padding-left: 2px;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 0.7em;
+  color: green;
+}
+.tableContainer .order-detail-container .totalprice {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 100%;
+}
+.tableContainer .order-detail-container .totalprice .total-text {
+  width: 70%;
+  max-width: 70%;
+  font-size: bold;
+  text-align: right;
+  padding: 25px;
+}
+.tableContainer .order-detail-container .totalprice .total-val {
+  width: 30%;
+  max-width: 30%;
+  text-align: left;
+  padding: 25px;
+}
+.tableContainer .checkoutdiv {
+  padding: 20px;
+  max-width: 100%;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  text-align: right;
+}
+.tableContainer .checkoutdiv .checkout-bt {
+  padding: 10px;
+  color: #ffffff;
+  font-family: inherit;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  background-color: #a51111;
+  border: 1px solid #000000;
+  margin-left: 20px;
+}
+
+/*# sourceMappingURL=checkout.css.map */

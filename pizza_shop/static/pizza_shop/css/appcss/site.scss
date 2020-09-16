@@ -1,0 +1,252 @@
+body {
+    background-color: blue;
+    margin-top: 1px !important;
+}
+
+@mixin topping-container {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 10px;
+}
+
+@mixin logo-container {
+    font-size: 1.5em;
+    font-family: 'talian Plate No2 Bold', 'HelveticaNeue-CondensedBold', 'Arial Narrow', Arial, sans-serif;
+    padding: 8px 5px 8px 5px;
+    height: 40px;
+}
+
+.body-container {
+    border: 1px solid;
+    border-width: 0px 1px;
+    background-color: #ffffff;
+    max-width: 90%;
+    margin: auto;
+    .logo-container {
+        @include logo-container();
+        background-color: rgb(165, 17, 17);
+        .logo {
+            float: left;
+            color: #ffffff;
+            font-size: 35px;
+            font-weight: 400;
+            margin-left: 20px;
+        }
+        .button-main {
+            float: right;
+            padding: 10px;
+            border: 0px solid #000;
+            color: #ffffff;
+            font-family: inherit;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 400;
+            cursor: pointer;
+            background-color: rgb(165, 17, 17);
+            border: 1px solid #000000;
+            margin-left: 20px;
+        }
+        .button-main:hover {
+            background-color: rgb(209, 38, 38);
+        }
+    }
+    .navbar {
+        @include logo-container();
+        background-color: #ffffff;
+        color: #000;
+        border-bottom: 1px solid #000;
+        .navbar-container {
+            display: flex;
+            flex-wrap: nowrap;
+            max-width: 100%;
+            .welcomr-msg {
+                color: black;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 10px;
+                width: 90%;
+                min-width: 60%;
+            }
+            .navbar-brand {
+                font-size: 1.2em;
+                font-weight: 600;
+                min-width: 30%;
+                text-decoration: none;
+                color: inherit;
+            }
+            .cart {
+                margin-top: 8px;
+                margin-right: 5px;
+                text-align: right;
+                width: 100%;
+                min-width: 30%;
+                cursor: pointer;
+            }
+        }
+    }
+    .body-content {
+        padding: 5px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+}
+
+@media all and (min-width:450px) and (max-width:768px) {
+    .body-container {
+        max-width: 100%;
+        margin: 0px !important;
+    }
+}
+
+@media all and (min-width:1px) and (max-width:450px) {
+    .body-container {
+        max-width: 100%;
+        margin: 0px !important;
+        .logo-container {
+            .button-main {
+                font-size: 10px;
+                font-weight: 100;
+                margin-left: 5px;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+.floatint-area {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: none;
+    .floating-content {
+        position: relative;
+        padding: 15px;
+        background-color: #ffffff;
+        border: 1px solid #CCC;
+        box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
+        .close-floatingbutton {
+            float: right;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .loginform,
+        .signupform,
+        .toppingform {
+            border-top-right-radius: 50px;
+            border: 1px solid #ccc;
+            display: none;
+            .heading {
+                max-width: 100%;
+                padding: 15px;
+                border-bottom: 1px solid #ccc;
+            }
+            .signupcontent {
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 100%;
+                padding: 5px;
+                .userinp {
+                    margin: 10px;
+                }
+                .extra-container {
+                    @include topping-container();
+                    display: none;
+                    .extra-item {
+                        display: flex;
+                        flex-direction: column;
+                        max-width: 100%;
+                        max-width: 100%;
+                        border: 1px solid rgb(15, 15, 15);
+                        margin: 5px;
+                        .extra-title {
+                            max-width: 100%;
+                            text-align: center;
+                            font-weight: bolder;
+                            padding: 5px;
+                            border-bottom: 1px solid rgb(82, 79, 79);
+                        }
+                        .extra-tab-optioncontainer {
+                            display: flex;
+                            flex-wrap: nowrap;
+                            padding: 5px;
+                        }
+                        .extra-tab {
+                            width: 35%;
+                            padding: 5px;
+                        }
+                        .extra-tab-option {
+                            width: 15%;
+                            text-align: right;
+                            padding: 5px;
+                            .extra-price {
+                                font: bold;
+                                font-style: italic;
+                            }
+                        }
+                    }
+                }
+                .toppings-container {
+                    @include topping-container();
+                    display: none;
+                    .topping-item {
+                        display: flex;
+                        flex-wrap: nowrap;
+                        max-width: 100%;
+                        .toping-check,
+                        .toping-name {
+                            margin: 5px 0px;
+                            font-weight: bold;
+                            padding: 10px;
+                            border: 1px solid #ccc;
+                        }
+                        .toping-check {
+                            width: 10%;
+                        }
+                        .toping-name {
+                            width: 90%;
+                        }
+                    }
+                }
+            }
+            .buttonholder {
+                display: flex;
+                flex-wrap: nowrap;
+                text-align: right;
+                .buttoncontainer {
+                    .bt-toppings,
+                    .bt-toppings-next,
+                    .bt-toppings-back {
+                        margin: 5px;
+                        padding: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.message {
+    widows: 100%;
+    text-align: center;
+}
+
+.message span {
+    font-weight: bold;
+}
+
+.welcomr-msg {
+    font: bold;
+    color: #fff;
+}
+
+.error {
+    color: red;
+}
+
+.info {
+    color: green;
+}

@@ -1,0 +1,40 @@
+{% extends "pizza_shop/layout.html" %} {% block title %} Menu {% endblock %} {% block customstatic %} {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'pizza_shop/css/appcss/menu.css' %}" />
+<script src="../static/pizza_shop/javascript/menu.js"></script>
+{%endblock%} {% block content %} {%for menuitem in menu_options%}
+<div class="menu-options">
+    <input type="checkbox" id="drop-{{menuitem.id}}" />
+    <div class="menu-desc">
+        <label for="drop-{{menuitem.id}}" class="menu-text">
+            <i class="arrow right"></i> <i class="arrow down"></i>
+            {{menuitem.menu_desc}}
+        </label>
+    </div>
+    <div class="submenu-options">
+        {%for submenu in menuitem.submenuoption_set.all%}
+        <div class="pizza">
+            <div class="pizza-cont">
+                <input type="checkbox" id="drop-{{submenu.id}}" />
+                <label class="sub-menu-text" for="drop-{{submenu.id}}">
+                    <i class="arrow right"></i> <i class="arrow down"></i>
+                    {{submenu.menu_sub_desc}}
+                </label>
+                <div class="size-price-container">
+                    {%for detail in submenu.submenuoptiondetail_set.all%}
+                    <div class="size-price">
+                        <div>{{detail.menusuboptionsize.size_desc}}</div>
+                        <div>${{detail.price|stringformat:".2f"}}</div>
+                        <span style="display: none;">{{detail.id}}</span>
+                        <span style="display: none;">{{submenu.numberOfToppings}}</span>
+                        <span style="display: none;">{{menuitem.contains_extra}}</span>
+                        <span style="display: none;">{{menuitem.id}}</span>
+                        <span style="display: none;">{{submenu.toppingsAllowed}}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %} {% endblock %}

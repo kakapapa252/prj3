@@ -1,0 +1,289 @@
+body {
+  background-color: blue;
+  margin-top: 1px !important;
+}
+
+.body-container {
+  border: 1px solid;
+  border-width: 0px 1px;
+  background-color: #ffffff;
+  max-width: 90%;
+  margin: auto;
+}
+.body-container .logo-container {
+  font-size: 1.5em;
+  font-family: "talian Plate No2 Bold", "HelveticaNeue-CondensedBold", "Arial Narrow", Arial, sans-serif;
+  padding: 8px 5px 8px 5px;
+  height: 40px;
+  background-color: #a51111;
+}
+.body-container .logo-container .logo {
+  float: left;
+  color: #ffffff;
+  font-size: 35px;
+  font-weight: 400;
+  margin-left: 20px;
+}
+.body-container .logo-container .button-main {
+  float: right;
+  padding: 10px;
+  border: 0px solid #000;
+  color: #ffffff;
+  font-family: inherit;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  background-color: #a51111;
+  border: 1px solid #000000;
+  margin-left: 20px;
+}
+.body-container .logo-container .button-main:hover {
+  background-color: #d12626;
+}
+.body-container .navbar {
+  font-size: 1.5em;
+  font-family: "talian Plate No2 Bold", "HelveticaNeue-CondensedBold", "Arial Narrow", Arial, sans-serif;
+  padding: 8px 5px 8px 5px;
+  height: 40px;
+  background-color: #ffffff;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+.body-container .navbar .navbar-container {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 100%;
+}
+.body-container .navbar .navbar-container .welcomr-msg {
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 10px;
+  width: 90%;
+  min-width: 60%;
+}
+.body-container .navbar .navbar-container .navbar-brand {
+  font-size: 1.2em;
+  font-weight: 600;
+  min-width: 30%;
+  text-decoration: none;
+  color: inherit;
+}
+.body-container .navbar .navbar-container .cart {
+  margin-top: 8px;
+  margin-right: 5px;
+  text-align: right;
+  width: 100%;
+  min-width: 30%;
+  cursor: pointer;
+}
+.body-container .body-content {
+  padding: 5px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media all and (min-width: 450px) and (max-width: 768px) {
+  .body-container {
+    max-width: 100%;
+    margin: 0px !important;
+  }
+}
+@media all and (min-width: 1px) and (max-width: 450px) {
+  .body-container {
+    max-width: 100%;
+    margin: 0px !important;
+  }
+  .body-container .logo-container .button-main {
+    font-size: 10px;
+    font-weight: 100;
+    margin-left: 5px;
+    padding: 5px;
+  }
+}
+.floatint-area {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: none;
+}
+.floatint-area .floating-content {
+  position: relative;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1px solid #CCC;
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
+}
+.floatint-area .floating-content .close-floatingbutton {
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
+}
+.floatint-area .floating-content .loginform,
+.floatint-area .floating-content .signupform,
+.floatint-area .floating-content .toppingform {
+  border-top-right-radius: 50px;
+  border: 1px solid #ccc;
+  display: none;
+}
+.floatint-area .floating-content .loginform .heading,
+.floatint-area .floating-content .signupform .heading,
+.floatint-area .floating-content .toppingform .heading {
+  max-width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+.floatint-area .floating-content .loginform .signupcontent,
+.floatint-area .floating-content .signupform .signupcontent,
+.floatint-area .floating-content .toppingform .signupcontent {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 5px;
+}
+.floatint-area .floating-content .loginform .signupcontent .userinp,
+.floatint-area .floating-content .signupform .signupcontent .userinp,
+.floatint-area .floating-content .toppingform .signupcontent .userinp {
+  margin: 10px;
+}
+.floatint-area .floating-content .loginform .signupcontent .extra-container,
+.floatint-area .floating-content .signupform .signupcontent .extra-container,
+.floatint-area .floating-content .toppingform .signupcontent .extra-container {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 10px;
+  display: none;
+}
+.floatint-area .floating-content .loginform .signupcontent .extra-container .extra-item,
+.floatint-area .floating-content .signupform .signupcontent .extra-container .extra-item,
+.floatint-area .floating-content .toppingform .signupcontent .extra-container .extra-item {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  max-width: 100%;
+  border: 1px solid #0f0f0f;
+  margin: 5px;
+}
+.floatint-area .floating-content .loginform .signupcontent .extra-container .extra-item .extra-title,
+.floatint-area .floating-content .signupform .signupcontent .extra-container .extra-item .extra-title,
+.floatint-area .floating-content .toppingform .signupcontent .extra-container .extra-item .extra-title {
+  max-width: 100%;
+  text-align: center;
+  font-weight: bolder;
+  padding: 5px;
+  border-bottom: 1px solid #524f4f;
+}
+.floatint-area .floating-content .loginform .signupcontent .extra-container .extra-item .extra-tab-optioncontainer,
+.floatint-area .floating-content .signupform .signupcontent .extra-container .extra-item .extra-tab-optioncontainer,
+.floatint-area .floating-content .toppingform .signupcontent .extra-container .extra-item .extra-tab-optioncontainer {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 5px;
+}
+.floatint-area .floating-content .loginform .signupcontent .extra-container .extra-item .extra-tab,
+.floatint-area .floating-content .signupform .signupcontent .extra-container .extra-item .extra-tab,
+.floatint-area .floating-content .toppingform .signupcontent .extra-container .extra-item .extra-tab {
+  width: 35%;
+  padding: 5px;
+}
+.floatint-area .floating-content .loginform .signupcontent .extra-container .extra-item .extra-tab-option,
+.floatint-area .floating-content .signupform .signupcontent .extra-container .extra-item .extra-tab-option,
+.floatint-area .floating-content .toppingform .signupcontent .extra-container .extra-item .extra-tab-option {
+  width: 15%;
+  text-align: right;
+  padding: 5px;
+}
+.floatint-area .floating-content .loginform .signupcontent .extra-container .extra-item .extra-tab-option .extra-price,
+.floatint-area .floating-content .signupform .signupcontent .extra-container .extra-item .extra-tab-option .extra-price,
+.floatint-area .floating-content .toppingform .signupcontent .extra-container .extra-item .extra-tab-option .extra-price {
+  font: bold;
+  font-style: italic;
+}
+.floatint-area .floating-content .loginform .signupcontent .toppings-container,
+.floatint-area .floating-content .signupform .signupcontent .toppings-container,
+.floatint-area .floating-content .toppingform .signupcontent .toppings-container {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 10px;
+  display: none;
+}
+.floatint-area .floating-content .loginform .signupcontent .toppings-container .topping-item,
+.floatint-area .floating-content .signupform .signupcontent .toppings-container .topping-item,
+.floatint-area .floating-content .toppingform .signupcontent .toppings-container .topping-item {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 100%;
+}
+.floatint-area .floating-content .loginform .signupcontent .toppings-container .topping-item .toping-check,
+.floatint-area .floating-content .loginform .signupcontent .toppings-container .topping-item .toping-name,
+.floatint-area .floating-content .signupform .signupcontent .toppings-container .topping-item .toping-check,
+.floatint-area .floating-content .signupform .signupcontent .toppings-container .topping-item .toping-name,
+.floatint-area .floating-content .toppingform .signupcontent .toppings-container .topping-item .toping-check,
+.floatint-area .floating-content .toppingform .signupcontent .toppings-container .topping-item .toping-name {
+  margin: 5px 0px;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+.floatint-area .floating-content .loginform .signupcontent .toppings-container .topping-item .toping-check,
+.floatint-area .floating-content .signupform .signupcontent .toppings-container .topping-item .toping-check,
+.floatint-area .floating-content .toppingform .signupcontent .toppings-container .topping-item .toping-check {
+  width: 10%;
+}
+.floatint-area .floating-content .loginform .signupcontent .toppings-container .topping-item .toping-name,
+.floatint-area .floating-content .signupform .signupcontent .toppings-container .topping-item .toping-name,
+.floatint-area .floating-content .toppingform .signupcontent .toppings-container .topping-item .toping-name {
+  width: 90%;
+}
+.floatint-area .floating-content .loginform .buttonholder,
+.floatint-area .floating-content .signupform .buttonholder,
+.floatint-area .floating-content .toppingform .buttonholder {
+  display: flex;
+  flex-wrap: nowrap;
+  text-align: right;
+}
+.floatint-area .floating-content .loginform .buttonholder .buttoncontainer .bt-toppings,
+.floatint-area .floating-content .loginform .buttonholder .buttoncontainer .bt-toppings-next,
+.floatint-area .floating-content .loginform .buttonholder .buttoncontainer .bt-toppings-back,
+.floatint-area .floating-content .signupform .buttonholder .buttoncontainer .bt-toppings,
+.floatint-area .floating-content .signupform .buttonholder .buttoncontainer .bt-toppings-next,
+.floatint-area .floating-content .signupform .buttonholder .buttoncontainer .bt-toppings-back,
+.floatint-area .floating-content .toppingform .buttonholder .buttoncontainer .bt-toppings,
+.floatint-area .floating-content .toppingform .buttonholder .buttoncontainer .bt-toppings-next,
+.floatint-area .floating-content .toppingform .buttonholder .buttoncontainer .bt-toppings-back {
+  margin: 5px;
+  padding: 5px;
+}
+
+.message {
+  widows: 100%;
+  text-align: center;
+}
+
+.message span {
+  font-weight: bold;
+}
+
+.welcomr-msg {
+  font: bold;
+  color: #fff;
+}
+
+.error {
+  color: red;
+}
+
+.info {
+  color: green;
+}
+
+/*# sourceMappingURL=site.css.map */

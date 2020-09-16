@@ -1,0 +1,225 @@
+$border-radius: 10px;
+@mixin arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    padding: 3px;
+    margin: 2px;
+}
+
+@mixin arrow-right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+@mixin arrow-down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+@mixin disable-text-selection {
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+@mixin submenu-option {
+    display: flex;
+    max-width: 100% !important;
+    max-width: 100%;
+    @include disable-text-selection();
+    border: 1px solid #ccc;
+}
+
+@mixin size-price-option {
+    color: #444;
+    background: #fff;
+    border: 1px solid #CCC;
+    box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    vertical-align: middle;
+    padding: 5px;
+    text-align: center;
+}
+
+[id^=drop] {
+    display: none;
+}
+
+@media all and (min-width: 769px) {
+    .menu-options {
+        font-weight: bolder;
+        font-size: large;
+        margin: 15px;
+        padding: 5px;
+        max-width: 100%;
+        .menu-desc {
+            .arrow {
+                display: none;
+            }
+        }
+        .submenu-options {
+            @include submenu-option();
+            flex-direction: row;
+            overflow: auto;
+            margin: 15px 0px;
+            border-radius: $border-radius;
+            .pizza {
+                width: 250px;
+                height: 150px;
+                margin: 20px 15px;
+                background-color: rgb(255, 245, 212);
+                border: 1px solid #CCC;
+                box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
+                .pizza-cont {
+                    width: 250px;
+                    margin: 15px;
+                    .sub-menu-text {
+                        .arrow {
+                            display: block;
+                        }
+                    }
+                    .size-price-container {
+                        display: flex;
+                        flex-direction: row;
+                        width: 250px;
+                        padding: 5px;
+                        text-align: center;
+                        .size-price {
+                            @include size-price-option();
+                            display: inline-block;
+                            width: 80px;
+                            max-width: 100px;
+                            margin: 10px;
+                            height: 50px;
+                        }
+                        .size-price:hover {
+                            background-color: rgb(92, 92, 206);
+                            color: white;
+                            box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.6);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (min-width:1px) and (max-width:769px) {
+    .menu-options {
+        font-weight: bolder;
+        font-size: large;
+        margin: 15px;
+        padding: 5px;
+        width: 90%;
+        border: 1px solid #ccc;
+        border-radius: $border-radius;
+        .menu-desc {
+            padding: 0px;
+            .menu-text {
+                max-width: 100%;
+                cursor: pointer;
+                padding: 10px 15px;
+                display: inline-block;
+            }
+            .right {
+                display: inline-block;
+                @include arrow();
+                @include arrow-right();
+            }
+            .down {
+                display: none;
+                @include arrow();
+                @include arrow-down();
+                margin: 5px !important;
+            }
+        }
+        .submenu-options {
+            @include submenu-option();
+            display: none !important;
+            border: 0px !important;
+            margin: 0px 0px;
+            flex-direction: column;
+            .pizza {
+                max-width: 100%;
+                margin: 1px 10px;
+                .pizza-cont {
+                    [id^=drop]:checked {
+                        &~ {
+                            .size-price-container {
+                                display: flex;
+                            }
+                            .sub-menu-text {
+                                .right {
+                                    display: none;
+                                }
+                                .down {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                    .sub-menu-text {
+                        display: inline-block;
+                        padding: 5px;
+                        width: 95%;
+                        background-color: rgb(255, 245, 212);
+                        border: 1px solid #CCC;
+                        box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
+                        .right {
+                            display: inline-block;
+                            @include arrow();
+                            @include arrow-right();
+                        }
+                        .down {
+                            display: none;
+                            @include arrow();
+                            @include arrow-down();
+                            margin: 5px !important;
+                        }
+                    }
+                    .size-price-container {
+                        display: none;
+                        flex-direction: column;
+                        max-width: 100%;
+                        .size-price {
+                            @include size-price-option();
+                            display: flex;
+                            flex-wrap: wrap;
+                            max-width: 100%;
+                            margin: 1px 10px;
+                            height: 30px;
+                            div {
+                                display: inline-block;
+                            }
+                            div:first-child {
+                                width: 60%;
+                                text-align: left;
+                                padding-left: 10px;
+                            }
+                            div:last-child {
+                                text-align: right;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        [id^=drop]:checked {
+            &~ {
+                .menu-desc {
+                    .right {
+                        display: none;
+                    }
+                    .down {
+                        display: inline-block;
+                    }
+                }
+                .submenu-options {
+                    display: flex !important;
+                }
+            }
+        }
+    }
+}
